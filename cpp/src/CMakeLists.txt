@@ -1,0 +1,2 @@
+add_subdirectory(support_vector_machine)
+add_subdirectory(common)
