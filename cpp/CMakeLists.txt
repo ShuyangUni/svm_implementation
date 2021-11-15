@@ -10,9 +10,6 @@ set(CMAKE_CXX_FLAGS_RELEASE "-std=c++11 -O3")
 
 find_package(Eigen3 REQUIRED)
 
-set(GTEST_ROOT "/usr/local")
-find_package(GTest REQUIRED)
-
 add_subdirectory(src)
 
 ## demo_svm_smo_linear
@@ -21,7 +18,6 @@ add_executable(demo_svm_smo_linear
 )
 add_dependencies(demo_svm_smo_linear
   svm::svm
-  common::log
   common::data_loader
 )
 target_include_directories(demo_svm_smo_linear PUBLIC 
@@ -29,7 +25,6 @@ target_include_directories(demo_svm_smo_linear PUBLIC
 )
 target_link_libraries(demo_svm_smo_linear
   svm::svm
-  common::log
   common::data_loader
 )
 
@@ -39,7 +34,6 @@ add_executable(demo_svm_smo_nonlinear
 )
 add_dependencies(demo_svm_smo_nonlinear
   svm::svm
-  common::log
   common::data_loader
 )
 target_include_directories(demo_svm_smo_nonlinear PUBLIC 
@@ -47,6 +41,5 @@ target_include_directories(demo_svm_smo_nonlinear PUBLIC
 )
 target_link_libraries(demo_svm_smo_nonlinear
   svm::svm
-  common::log
   common::data_loader
 )

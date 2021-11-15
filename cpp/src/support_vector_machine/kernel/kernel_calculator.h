@@ -2,15 +2,15 @@
 #pragma once
 
 #include <Eigen/Dense>
+#include <iostream>
 
-#include "src/common/log.h"
 #include "src/support_vector_machine/kernel/kernel.h"
 
 namespace svm {
 namespace kernel {
 class KernelCalculator {
  public:
-  static bool calculateKernel(const Eigen::MatrixXd &x1,
+  static bool CalculateKernel(const Eigen::MatrixXd &x1,
                               const Eigen::MatrixXd &x2,
                               const kernel::Kernel &kernel,
                               const Eigen::VectorXd &kernel_param,

@@ -3,7 +3,7 @@
 
 namespace svm {
 namespace kernel {
-bool KernelCalculator::calculateKernel(const Eigen::MatrixXd &x1,
+bool KernelCalculator::CalculateKernel(const Eigen::MatrixXd &x1,
                                        const Eigen::MatrixXd &x2,
                                        const Kernel &kernel,
                                        const Eigen::VectorXd &kernel_param,
@@ -26,7 +26,9 @@ bool KernelCalculator::calculateKernel(const Eigen::MatrixXd &x1,
       KernelTanh(x1, x2, kernel_param(0), kernel_param(1), mat_k);
       break;
     default:
-      UERROR << "KernelCalculator::calculateKernel(): kernel input is wrong.";
+      std::cout << "[Error]: KernelCalculator::CalculateKernel(): kernel input "
+                   "is wrong."
+                << std::endl;
       return false;
       break;
   }

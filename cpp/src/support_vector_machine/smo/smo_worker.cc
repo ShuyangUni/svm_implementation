@@ -22,7 +22,7 @@ bool SMOWorker::Train(const Eigen::MatrixXd &train_x,
   alpha_ = Eigen::VectorXd::Zero(ndata_);
   b_ = 0;
 
-  kernel::KernelCalculator::calculateKernel(x_, x_, parameter->kernel,
+  kernel::KernelCalculator::CalculateKernel(x_, x_, parameter->kernel,
                                             parameter->kernel_param, &k_);
 
   if (!Process()) {
@@ -50,8 +50,8 @@ bool SMOWorker::Process() {
         }
       }
     }
-    UINFO << "examine_all: " << examine_all << ", num_changed: " << num_changed
-          << std::endl;
+    std::cout << "[Info]: SMOWorker::Process(): examine_all: " << examine_all
+              << ", num_changed: " << num_changed << std::endl;
     if (examine_all == 1) {
       examine_all = 0;
     } else if (num_changed == 0) {
@@ -230,7 +230,9 @@ void SMOWorker::SortIndex(const std::vector<double> &values,
 
 bool SMOWorker::SetTol(const double &tol) {
   if (tol < 0) {
-    UWARN << "SMOWorker::SetTolerance(): tolerance_ should not be negative.";
+    std::cout << "[Error]: SMOWorker::SetTolerance(): tolerance_ should not be "
+                 "negative."
+              << std::endl;
     return false;
   }
   tol_ = tol;
@@ -239,7 +241,9 @@ bool SMOWorker::SetTol(const double &tol) {
 
 bool SMOWorker::SetEps(const double &eps) {
   if (eps < 0) {
-    UWARN << "SMOWorker::SetTolerance(): tolerance_ should not be negative.";
+    std::cout << "[Error]: SMOWorker::SetTolerance(): tolerance_ should not be "
+                 "negative."
+              << std::endl;
     return false;
   }
   eps_ = eps;

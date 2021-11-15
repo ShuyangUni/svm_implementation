@@ -3,10 +3,9 @@
 
 #include <Eigen/Dense>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
-
-#include "src/common/log.h"
 
 namespace svm {
 namespace common {

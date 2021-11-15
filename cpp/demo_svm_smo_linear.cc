@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "src/common/data_loader.h"
-#include "src/common/log.h"
 #include "src/support_vector_machine/kernel/kernel.h"
 #include "src/support_vector_machine/svm.h"
 
@@ -23,10 +22,14 @@ int main(int argc, char const *argv[]) {
   Eigen::VectorXi vlabel;
   svm::common::DataLoader::LoadTxTData(filepath_test.c_str(), &vdata, &vlabel);
 
-  UINFO << tdata.rows() << " " << tdata.cols();
-  UINFO << tlabel.rows();
-  UINFO << vdata.rows() << " " << vdata.cols();
-  UINFO << vlabel.rows();
+  std::cout << "[Info]: main(): Training data size: " << tdata.rows() << " "
+            << tdata.cols() << std::endl;
+  std::cout << "[Info]: main(): Training label size: " << tlabel.rows()
+            << std::endl;
+  std::cout << "[Info]: main(): Testing data size: " << vdata.rows() << " "
+            << vdata.cols() << std::endl;
+  std::cout << "[Info]: main(): Testing label size: " << vlabel.rows()
+            << std::endl;
 
   svm::SVM svm;
   // set parameter
@@ -43,20 +46,26 @@ int main(int argc, char const *argv[]) {
   svm.Infer(tdata, tlabel, parameter, tdata, &tlabel_res);
   svm::structure::SVMResult result_train;
   svm.Test(tlabel, tlabel_res, &result_train);
-  UINFO << "Training results: ";
-  UINFO << "    num test: " << result_train.num_test;
-  UINFO << "    num positive: " << result_train.num_pos;
-  UINFO << "    num negative: " << result_train.num_neg;
+  std::cout << "[Info]: main(): Training results: " << std::endl;
+  std::cout << "[Info]: main():     num test: " << result_train.num_test
+            << std::endl;
+  std::cout << "[Info]: main():     num positive: " << result_train.num_pos
+            << std::endl;
+  std::cout << "[Info]: main():     num negative: " << result_train.num_neg
+            << std::endl;
 
   // testing
   Eigen::VectorXi vlabel_res;
   svm.Infer(tdata, tlabel, parameter, vdata, &vlabel_res);
   svm::structure::SVMResult result_test;
   svm.Test(vlabel, vlabel_res, &result_test);
-  UINFO << "Testing results: ";
-  UINFO << "    num test: " << result_test.num_test;
-  UINFO << "    num positive: " << result_test.num_pos;
-  UINFO << "    num negative: " << result_test.num_neg;
+  std::cout << "[Info]: main(): Testing results: " << std::endl;
+  std::cout << "[Info]: main():     num test: " << result_test.num_test
+            << std::endl;
+  std::cout << "[Info]: main():     num positive: " << result_test.num_pos
+            << std::endl;
+  std::cout << "[Info]: main():     num negative: " << result_test.num_neg
+            << std::endl;
 
   return 0;
 }

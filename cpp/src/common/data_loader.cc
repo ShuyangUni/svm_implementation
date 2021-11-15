@@ -9,7 +9,8 @@ bool DataLoader::LoadTxTData(const std::string &filepath_data,
   std::ifstream ifs;
   ifs.open(filepath_data.c_str(), std::ios::in);
   if (!ifs.is_open()) {
-    UERROR << "DataLoader::LoadTxTData(): failed to open data file";
+    std::cout << "[Error]: DataLoader::LoadTxTData(): failed to open data file"
+              << std::endl;
     return false;
   }
   size_t dim = 0;
@@ -24,8 +25,10 @@ bool DataLoader::LoadTxTData(const std::string &filepath_data,
       dim_first_updated = false;
     } else {
       if (dim != values.size()) {
-        UERROR << "DataLoader::LoadTxTData(): input data dimension is "
-                  "different in rows.";
+        std::cout
+            << "[Error]: DataLoader::LoadTxTData(): input data dimension is "
+               "different in rows."
+            << std::endl;
         return false;
       }
     }

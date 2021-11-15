@@ -17,7 +17,7 @@ bool SVM::Infer(const Eigen::MatrixXd &train_x, const Eigen::VectorXi &train_y,
                 const structure::SVMParameter &parameter,
                 const Eigen::MatrixXd &test_x, Eigen::VectorXi *infer_y) {
   Eigen::MatrixXd mat_k;
-  kernel::KernelCalculator::calculateKernel(test_x, train_x, parameter.kernel,
+  kernel::KernelCalculator::CalculateKernel(test_x, train_x, parameter.kernel,
                                             parameter.kernel_param, &mat_k);
   *infer_y = Eigen::VectorXi::Zero(test_x.rows());
   for (size_t i = 0; i < test_x.rows(); ++i) {

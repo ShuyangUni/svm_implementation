@@ -2,11 +2,11 @@
 #pragma once
 
 #include <algorithm>
+#include <iostream>
 #include <memory>
 #include <numeric>
 #include <vector>
 
-#include "src/common/log.h"
 #include "src/support_vector_machine/kernel/kernel_calculator.h"
 #include "src/support_vector_machine/structure/structure_svm.h"
 

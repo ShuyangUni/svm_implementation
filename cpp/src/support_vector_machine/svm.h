@@ -2,9 +2,9 @@
 #pragma once
 
 #include <Eigen/Dense>
+#include <iostream>
 #include <memory>
 
-#include "src/common/log.h"
 #include "src/support_vector_machine/kernel/kernel_calculator.h"
 #include "src/support_vector_machine/smo/smo_worker.h"
 #include "src/support_vector_machine/structure/structure_svm.h"

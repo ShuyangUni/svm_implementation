@@ -5,7 +5,6 @@ add_library(svm_svm SHARED "")
 add_library(svm::svm ALIAS svm_svm)
 add_dependencies(svm_smo
   svm::smo
-  common::log
 )
 target_sources(svm_svm PUBLIC 
   svm.cc
@@ -16,5 +15,4 @@ target_include_directories(svm_svm PUBLIC
 )
 target_link_libraries(svm_svm 
   svm::smo
-  common::log
 )
